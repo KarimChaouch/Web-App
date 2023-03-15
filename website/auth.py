@@ -18,7 +18,7 @@ limiter = Limiter(
 )
 
 @auth.route('/login', methods=['GET', 'POST'])
-@limiter.limit("15/day;10/hour;3/minute")
+@limiter.limit("20/day;15/hour;10/minute")
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -46,7 +46,7 @@ def logout():
 
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
-@limiter.limit("5/day;3/hour")
+@limiter.limit("20/day;10/hour")
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
