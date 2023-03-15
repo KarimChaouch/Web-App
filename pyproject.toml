@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "web-app"
+description = "Manage home IoT"
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["iot"]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+authors = [
+    { name = "Karim Chaouch", email = "karim.echaouch@gmail.com" }
+]
+dependencies = [
+   'flask',
+   'Flask-SQLAlchemy',
+   'flask-login',
+   'flask-admin'
+]
+dynamic = ["version"]
+
+[tool.setuptools]
+    py-modules = []
+    
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
