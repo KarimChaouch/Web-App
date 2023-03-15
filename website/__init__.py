@@ -8,6 +8,7 @@ import logging
 import sys
 from flask_admin.contrib.sqla import ModelView
 
+
 # Set logger web-app
 
 logger = logging.getLogger('web-app')
@@ -33,11 +34,10 @@ db = SQLAlchemy()
 # TODO: Switch to ORM
 DB_NAME = "web-app.db"
 
+app = Flask(__name__)
 
 
-def create_app():
-
-    app = Flask(__name__)
+def configure_app():
     #TODO: Change SECRET KEY
     app.config['SECRET_KEY'] = '1234567'
     #TODO: Change DATABASE URI
@@ -82,4 +82,5 @@ def create_app():
     admin = Admin(app, name='Administrator', index_view=AdminIndexView(), url='/home', template_mode='bootstrap4')
     admin.add_view(ModelView(User, db.session,category='Menu'))
     admin.add_view(ModelView(Note, db.session,category='Menu'))
+
     return app

@@ -1,7 +1,7 @@
-from website import create_app
+from website import configure_app
 from waitress import serve
 
-app = create_app()
+app = configure_app()
 
 if __name__ == '__main__':
     # Run app with debug mode

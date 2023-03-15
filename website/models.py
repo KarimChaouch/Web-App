@@ -15,4 +15,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     full_name = db.Column(db.String(150))
+    admin = db.Column(db.Boolean, default=False)
+    enabled = db.Column(db.Boolean, default=False)
     notes = db.relationship('Note')

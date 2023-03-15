@@ -10,6 +10,6 @@ class AdminIndexView(admin.AdminIndexView):
     def index(self):
         if not login.current_user.is_authenticated:
             return redirect(url_for('auth.login'))
-        elif not login.current_user.email == 'karim.echaouch@gmail.com':
+        elif not login.current_user.admin:
             abort(401)
         return super(AdminIndexView, self).index()
