@@ -2,10 +2,11 @@ from flask import Flask, session, g
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager, current_user
+from flask_admin import Admin
 from datetime import timedelta
 import logging
 import sys
-
+from flask_admin.contrib.sqla import ModelView
 
 # Set logger web-app
 
@@ -30,7 +31,7 @@ logger.addHandler(stdout_handler)
 db = SQLAlchemy()
 
 # TODO: Switch to ORM
-DB_NAME = "database.db"
+DB_NAME = "web-app.db"
 
 
 
@@ -54,7 +55,6 @@ def create_app():
 
     from .views import views
     from .auth import auth
-
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
@@ -76,4 +76,10 @@ def create_app():
     def load_user(id):
         return User.query.get(int(id))
 
+
+    # admin configuration
+    from .admin import AdminIndexView
+    admin = Admin(app, name='Administrator', index_view=AdminIndexView(), url='/home', template_mode='bootstrap4')
+    admin.add_view(ModelView(User, db.session,category='Menu'))
+    admin.add_view(ModelView(Note, db.session,category='Menu'))
     return app
