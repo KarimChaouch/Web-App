@@ -57,77 +57,115 @@
     </nav> -->
 
     <!-- NEW NAVBAR -->
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {% if user.is_authenticated %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          <i class="fa fa-home fa-10x"></i>
+        <a class="navbar-brand" href="/"
+          ><i class="fa fa-home" aria-hidden="true"></i>
         </a>
         <button
           class="navbar-toggler"
           type="button"
-          data-mdb-toggle="collapse"
-          data-mdb-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i class="fa fa-bars" aria-hidden="true"></i>
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="me-3">
-            <div class="form-white input-group" style="width: 250px">
-              <input
-                type="search"
-                class="form-control rounded"
-                placeholder="Search..."
-                aria-label="Search"
-                aria-describedby="search-addon"
-              />
-            </div>
-          </form>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            {% if user.is_authenticated %}
-            <!-- <li class="nav-item">
-              <a class="nav-link" id="home" href="/">Home</a>
-            </li>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" id="logout" href="/logout">Logout</a>
-            </li> -->
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  ><i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                </a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" id="Account" href="/account"
-                    >Account</a
-                  >
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" id="logout" href="/logout">Logout</a>
-                </div>
-              </li>
-            </ul>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" id="login" href="/login">login</a>
+              <a class="nav-link mx-2 active" aria-current="page" href="/"
+                >Home</a
+              >
             </li>
+            {% if user.admin %}
             <li class="nav-item">
-              <a class="nav-link" id="signUp" href="/sign-up">Explore</a>
-            </li>
+                <a class="nav-link mx-2" href="/admin">Admin</a>
+              </li>            
             {% endif %}
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link mx-2 dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li><a class="dropdown-item" href="/settings">Settings</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- Navbar -->
+    {% else %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"
+          ><i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="#">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link mx-2 dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li><a class="dropdown-item" href="/login">Login</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="/sign-up">Sign-Up</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% endif %}
     <!-- FLASH MESSAGES -->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category ==
