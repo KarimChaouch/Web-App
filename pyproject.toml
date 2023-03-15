@@ -19,7 +19,8 @@ dependencies = [
    'flask',
    'Flask-SQLAlchemy',
    'flask-login',
-   'flask-admin'
+   'flask-admin',
+   'waitress'
 ]
 dynamic = ["version"]
 
