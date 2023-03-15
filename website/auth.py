@@ -32,8 +32,10 @@ def login():
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again.', category='error')
+        elif user and not user.enabled:
+            flash('Account not enabled yet, please contact admin.', category='error')
         else:
-            flash('Email does not exist OR account disabled', category='error')
+            flash('Email does not exist', category='error')
 
     return render_template("login.html", user=current_user)
 
