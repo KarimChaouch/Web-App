@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+    nginx:
+        container_name: nginx
+        volumes:
+            - '/volume/nginx-volume/nginx.conf:/etc/nginx/nginx.conf'
+        ports:
+            - '80:80'
+            - '443:443'
+        image: 'nginx:latest'
+    mysql:
+        container_name: mk-mysql
+        ports:
+            - 'true'
+        volumes:
+            - '/volume/mysql-volume/mysql:/var/lib/mysql'
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        image: run
