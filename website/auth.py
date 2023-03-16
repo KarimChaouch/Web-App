@@ -28,15 +28,14 @@ def login():
         password = request.form.get('password')
         otp = request.form.get('otp')
         user = User.query.filter_by(email=email).first()
-        check_otp = user.verify_totp(otp)
-        if user and user.active and check_otp:
+        if user and user.active and user.verify_totp(otp):
             if check_password_hash(user.password, password):
                 # flash('Logged in successfully!', category='success')
                 login_user(user, remember=False)
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again.', category='error')
-        elif user and not check_otp:
+        elif user and not user.verify_totp(otp):
             flash('OTP incorrect', category='error')
         elif user and not user.active:
             flash('Account not active yet, please contact admin.', category='error')
