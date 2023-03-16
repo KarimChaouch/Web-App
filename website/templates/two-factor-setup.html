@@ -1,4 +1,10 @@
+{% extends "layout.html" %} {% block title %}2FA{% endblock %} {% block content %}
 <h1>Two Factor Authentication Setup</h1>
-<p>You are almost done! Please start FreeOTP on your smartphone and scan the following QR Code with it:</p>
+<p>You are almost done! Please start Google authenticator on your smartphone and scan the following QR Code with it:</p>
 <p><img id="qrcode" src="{{ url_for('auth.qrcode') }}"></p>
-<p>I'm done, take me to the <a href="{{ url_for('auth.login') }}">Login</a> page!</p>
+<div class="btns">
+    <a href="{{ url_for('auth.login') }}">Login</a>
+  </div>
+<!-- <p>I'm done, take me to the <a href="{{ url_for('auth.login') }}">Login</a> page!</p> -->
+
+{% endblock %}

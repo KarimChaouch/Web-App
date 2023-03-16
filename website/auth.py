@@ -96,7 +96,7 @@ def two_factor_setup():
         return redirect(url_for('auth.sign_up'))
     # since this page contains the sensitive qrcode, make sure the browser
     # does not cache it
-    return render_template('two-factor-setup.html'), 200, {
+    return render_template('two-factor-setup.html', user=current_user), 200, {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache',
         'Expires': '0'}
