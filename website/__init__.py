@@ -41,7 +41,7 @@ def configure_app():
     #TODO: Change SECRET KEY
     app.config['SECRET_KEY'] = '1234567'
     #TODO: Change DATABASE URI
-    #app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@127.0.0.1/flask_website'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
