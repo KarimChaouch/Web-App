@@ -1,28 +1,37 @@
-{% extends "layout.html" %} {% block title %}Login{% endblock %} {% block content
-%}
+{% extends "layout.html" %} {% block title %}Login{% endblock %} {% block
+content %}
+<!--Stylesheet-->
+<head>
+  <link rel="stylesheet" href="/static/login.css" />
+</head>
+
 <form method="POST">
-  <h3 align="center">Login</h3>
+  <h3>Welcome!</h3>
   <div class="form-group">
-    <label for="email">Email Address</label>
+    <label for="email">Email</label>
     <input
       type="email"
       class="form-control"
+      placeholder="Please enter your email"
       id="email"
       name="email"
-      placeholder="Enter email"
     />
-  </div>
-  <div class="form-group">
+
     <label for="password">Password</label>
     <input
       type="password"
       class="form-control"
       id="password"
       name="password"
-      placeholder="Enter password"
+      placeholder="Please enter your password"
     />
   </div>
-  <br />
   <button type="submit" class="btn btn-primary">Login</button>
+  <br><br>
+  <div style="text-align: center">
+    <h6>Don't have an account ?</h4>
+    <a name="register" id="register" class="btn btn-primary" href="/sign-up" role="button">register</a>
+  </div>
 </form>
+
 {% endblock %}
