@@ -31,7 +31,7 @@ def login():
         check_otp = user.verify_totp(otp)
         if user and user.active and check_otp:
             if check_password_hash(user.password, password):
-                flash('Logged in successfully!', category='success')
+                # flash('Logged in successfully!', category='success')
                 login_user(user, remember=False)
                 return redirect(url_for('views.home'))
             else:
@@ -127,3 +127,12 @@ def validate(user_email):
     if user_email == "karim.echaouch@gmail.com":
         return True
     return False
+
+
+@auth.errorhandler(429)
+def too_many_requests(e):
+    return render_template('/errors/429.html', user=current_user), 429
+
+@auth.errorhandler(404)
+def page_not_found(e):
+    return render_template('/errors/404.html', user=current_user), 404

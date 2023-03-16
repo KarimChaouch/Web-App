@@ -1,0 +1,19 @@
+{% extends "layout.html" %} {% block title %}Too many requests{% endblock %} {%
+    block content %}
+    <head>
+      <link rel="stylesheet" href="/static/errors.css" />
+    </head>
+    <div id="error-page">
+      <div class="content">
+        <h2 class="header" data-text="302">302</h2>
+        <h4 data-text="Oops! Too many requests">Unauthorized</h4>
+        <p>
+        If you think something is wrong, please report.
+        </p>
+        <div class="btns">
+          <a href="/contact">contact admin</a>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    
