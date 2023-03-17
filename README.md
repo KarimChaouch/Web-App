@@ -1,6 +1,7 @@
 - [Install](#install)
+- [Run flask](#run-flask)
 
-## Install
+# Install
 
 ```
 # clone the repo
@@ -21,4 +22,9 @@ source Web-App/bin/activate
 - [Install](#install)
 
 pip install -e .
+```
+
+# Run flask
+```
+python3 main.py
 ```
