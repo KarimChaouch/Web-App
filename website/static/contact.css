@@ -17,7 +17,7 @@ h4 {
 
 input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
     font-size: 0.75em;
-    color: #999;
+    color: #3b3636;
     top: -5px;
     -webkit-transition: all 0.225s ease;
     transition: all 0.225s ease;
@@ -38,7 +38,7 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
 }
 
 .styled-input label {
-    color: #999;
+    color: #3b3636;
     padding: 1.3rem 30px 1rem 30px;
     position: absolute;
     top: 10px;
@@ -59,8 +59,8 @@ textarea {
     border: 0;
     width: 100%;
     font-size: 1rem;
-    background-color: #2d2d2d;
-    color: white;
+    background-color: #E9F0FD;
+    color: 3b3636;
     border-radius: 4px;
 }
 
@@ -85,12 +85,16 @@ textarea {
     margin: 20px auto 25px auto;
 }
 
+::placeholder {
+    color: transparent;
+  }
+
 button {
     float:none;
     padding: 7px 35px;
     border-radius: 60px;
     /* left:50%; */
-    margin: 20px 20px 25px 35%;
+    margin: 20px 20px 25px 37%;
     max-width: 40%;
 
     display: inline-block;

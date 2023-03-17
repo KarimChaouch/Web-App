@@ -5,6 +5,7 @@ content %}
 </head>
 
 <form method="POST">
+  <br /><br />
   <div class="container">
     <div class="row">
       <h1>Contact us!</h1>
@@ -12,31 +13,31 @@ content %}
     <div class="row input-container">
       <div class="col-xs-12">
         <div class="styled-input wide">
-          <input type="text" required />
+          <input type="text" id="name" name="name" required />
           <label>Name</label>
         </div>
       </div>
       <div class="col-md-6 col-sm-12">
         <div class="styled-input">
-          <input type="text" required />
+          <input type="text" id="email" name="email" required />
           <label>Email</label>
         </div>
       </div>
       <div class="col-md-6 col-sm-12">
         <div class="styled-input" style="float: right">
-          <input type="text" />
+          <input type="text" id="phone" name="phone" />
           <label>Phone Number (optional)</label>
         </div>
       </div>
       <div class="col-xs-12">
         <div class="styled-input wide">
-          <textarea required></textarea>
+          <textarea id="message" name="message" required></textarea>
           <label>Message</label>
         </div>
       </div>
       <div class="col-xs-12">
         <button type="submit" class="btn-lrg submit-btn">Submit</button>
-    </div>
+      </div>
     </div>
   </div>
 </form>

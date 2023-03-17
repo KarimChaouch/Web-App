@@ -14,10 +14,11 @@ class Note(db.Model):
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    sender = db.Column(db.String(150))
+    name = db.Column(db.String(150))
+    email = db.Column(db.String(150))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    phone_number = db.Column(db.Integer, default=0)
-    data = db.Column(db.String(10000))
+    phone = db.Column(db.String(15))
+    message = db.Column(db.String(10000))
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

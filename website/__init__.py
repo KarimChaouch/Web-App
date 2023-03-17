@@ -58,7 +58,7 @@ def configure_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note
+    from .models import User, Note, Message
     
     with app.app_context():
         try:
@@ -86,8 +86,9 @@ def configure_app():
     
     # admin configuration
     from .admin import AdminIndexView
-    admin = Admin(app, name='Administrator', index_view=AdminIndexView(), url='/', template_mode='bootstrap4')
-    admin.add_view(ModelView(User, db.session,category='Menu'))
-    admin.add_view(ModelView(Note, db.session,category='Menu'))
+    admin = Admin(app, name='Home', index_view=AdminIndexView(), url='/', template_mode='bootstrap4')
+    admin.add_view(ModelView(User, db.session)) # Can be changed to category='Menu'
+    admin.add_view(ModelView(Note, db.session))
+    admin.add_view(ModelView(Message, db.session))
 
     return app
