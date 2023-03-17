@@ -16,7 +16,7 @@ auth = Blueprint('auth', __name__)
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=["200 per day", "50 per hour"],
+    # default_limits=["200 per day", "50 per hour"],
     storage_uri="memory://",
 )
 
