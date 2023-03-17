@@ -9,11 +9,11 @@ services:
             - '443:443'
         image: 'nginx:latest'
     mysql:
-        container_name: mk-mysql
+        container_name: mysql-server
         ports:
             - 'true'
         volumes:
             - '/volume/mysql-volume/mysql:/var/lib/mysql'
         environment:
             - MYSQL_ROOT_PASSWORD=root
-        image: run
+        image: mysql/mysql-server:8.0.20

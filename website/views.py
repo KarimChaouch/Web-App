@@ -39,3 +39,9 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+
+
+@views.route('/contact')
+def contact():  
+    return render_template("contact.html", user=current_user)
