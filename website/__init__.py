@@ -1,4 +1,4 @@
-from flask import Flask, session, g
+from flask import Flask, session, g, render_template
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager, current_user
@@ -76,10 +76,17 @@ def configure_app():
     def load_user(id):
         return User.query.get(int(id))
 
-
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('/errors/404.html', user=current_user), 404
+    
+    @app.errorhandler(401)
+    def unauthorized(e):
+        return render_template('/errors/401.html', user=current_user), 401
+    
     # admin configuration
     from .admin import AdminIndexView
-    admin = Admin(app, name='Administrator', index_view=AdminIndexView(), url='/home', template_mode='bootstrap4')
+    admin = Admin(app, name='Administrator', index_view=AdminIndexView(), url='/', template_mode='bootstrap4')
     admin.add_view(ModelView(User, db.session,category='Menu'))
     admin.add_view(ModelView(Note, db.session,category='Menu'))
 
